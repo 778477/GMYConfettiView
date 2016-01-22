@@ -7,21 +7,34 @@
 //
 
 #import "ViewController.h"
-
+#import "GMYConfettiView.h"
 @interface ViewController ()
-
+@property (nonatomic, assign) BOOL isRainingConfetti;
+@property (nonatomic, strong) GMYConfettiView *confettiView;
 @end
 
 @implementation ViewController
-
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor redColor];
+    self.confettiView = [[GMYConfettiView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.confettiView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Override
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if(self.isRainingConfetti){
+        [self.confettiView stopConfetti];
+    }
+    else{
+        [self.confettiView starConfetti];
+    }
+    self.isRainingConfetti = !self.isRainingConfetti;
+}
 @end
