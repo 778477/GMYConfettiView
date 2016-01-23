@@ -31,7 +31,7 @@
         _intensity = .5f;
         _spriteType = Confetti;
         
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
